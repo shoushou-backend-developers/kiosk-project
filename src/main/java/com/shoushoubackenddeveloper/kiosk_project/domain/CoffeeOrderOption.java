@@ -16,7 +16,7 @@ public class CoffeeOrderOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    //TODO 연관관계 매핑 용현님과 의논 하여 확실하게 짜기
     @Setter @ManyToOne(optional = false) private Option option;
     @Setter @ManyToOne(optional = false) private CoffeeOrder coffeeOrder;
     @Setter @Column(nullable = false) private int quantity;
