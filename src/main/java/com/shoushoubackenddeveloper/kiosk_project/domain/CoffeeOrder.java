@@ -1,37 +1,45 @@
 package com.shoushoubackenddeveloper.kiosk_project.domain;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@ToString
-@Table(indexes = {
-        @Index(columnList = "quantity")
-})
 @Entity
 public class CoffeeOrder {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Setter ManyToOne Coffee coffee;
-//    @Setter ManyToOne Order order;
+    @Setter
+    @ManyToOne(optional = false)
+    private Order order;
 
-    @Setter @Column(nullable = false) private int quantity;
+    @Setter
+    @ManyToOne(optional = false)
+    private Coffee coffee;
 
+    @Setter
+    @Column(nullable = false)
+    private Integer quantity;
 
-
-    private CoffeeOrder(int quantity) {
+    private CoffeeOrder(Order order, Coffee coffee, Integer quantity){
+        this.order = order;
+        this.coffee = coffee;
         this.quantity = quantity;
     }
 
-    protected CoffeeOrder() {
+    public static CoffeeOrder of(Order order, Coffee coffee, Integer quantity){
+        return new CoffeeOrder(order, coffee, quantity);
     }
 
-    public static CoffeeOrder of(int quantity){
-        return new CoffeeOrder(quantity);
-    }
+    @OneToMany(mappedBy = "coffeeOrder", cascade = CascadeType.ALL)
+    private final Set<CoffeeOrderOption> coffeeOrderOptions = new LinkedHashSet<>();
+
 }
