@@ -16,29 +16,23 @@ import java.util.Objects;
         @Index(columnList = "engName")
 })
 @Entity
-public class Coffee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Coffee extends AuditingFields {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
-    @Column(nullable = false, unique = true, length = 3)
+    @Setter @Column(nullable = false, unique = true, length = 5)
     private String coffeeCode;
 
-    @Setter
-    @Column(nullable = false, length = 10)
+    @Setter @Column(nullable = false, length = 10)
     private String korName;
 
-    @Setter
-    @Column(length = 20)
+    @Setter @Column(length = 20)
     private String engName;
 
-    @Setter
-    @Column(nullable = false)
+    @Setter @Column(nullable = false)
     private Integer price;
 
-    @Setter
-    @Column(nullable = false, length = 6)
+    @Setter @Column(nullable = false, length = 6)
     private String orderStatus;
 
     @Setter @Column(nullable = false)

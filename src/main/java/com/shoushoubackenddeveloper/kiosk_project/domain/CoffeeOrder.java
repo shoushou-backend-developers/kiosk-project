@@ -13,21 +13,20 @@ import java.util.Set;
 @Getter
 @Entity
 public class CoffeeOrder {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
-    @ManyToOne(optional = false)
+    @Setter @ManyToOne(optional = false)
     private Order order;
 
-    @Setter
-    @ManyToOne(optional = false)
+    @Setter @ManyToOne(optional = false)
     private Coffee coffee;
 
-    @Setter
-    @Column(nullable = false)
+    @Setter @Column(nullable = false)
     private Integer quantity;
+
+    @OneToMany(mappedBy = "coffeeOrder", cascade = CascadeType.ALL)
+    private final Set<CoffeeOrderOption> coffeeOrderOptions = new LinkedHashSet<>();
 
     private CoffeeOrder(Order order, Coffee coffee, Integer quantity){
         this.order = order;
@@ -38,8 +37,5 @@ public class CoffeeOrder {
     public static CoffeeOrder of(Order order, Coffee coffee, Integer quantity){
         return new CoffeeOrder(order, coffee, quantity);
     }
-
-    @OneToMany(mappedBy = "coffeeOrder", cascade = CascadeType.ALL)
-    private final Set<CoffeeOrderOption> coffeeOrderOptions = new LinkedHashSet<>();
 
 }

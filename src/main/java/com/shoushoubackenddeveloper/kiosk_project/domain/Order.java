@@ -13,13 +13,11 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Order extends AuditingFields {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
-    @Column(nullable = false)
+    @Setter @Column(nullable = false)
     private Integer orderNo;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
@@ -32,4 +30,5 @@ public class Order {
     public static Order of(Integer orderNo) {
         return new Order(orderNo);
     }
+
 }
