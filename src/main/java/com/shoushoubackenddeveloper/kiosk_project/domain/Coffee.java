@@ -41,16 +41,20 @@ public class Coffee {
     @Column(nullable = false, length = 6)
     private String orderStatus;
 
-    private Coffee(String coffeeCode, String korName, String engName, Integer price, String orderStatus) {
+    @Setter @Column(nullable = false)
+    private Boolean sizeSelectable;
+
+    private Coffee(String coffeeCode, String korName, String engName, Integer price, String orderStatus, Boolean sizeSelectable) {
         this.coffeeCode = coffeeCode;
         this.korName = korName;
         this.engName = engName;
         this.price = price;
         this.orderStatus = orderStatus;
+        this.sizeSelectable = sizeSelectable;
     }
 
-    public static Coffee of(String coffeeCode, String korName, String engName, Integer price, String orderStatus) {
-        return new Coffee(coffeeCode, korName, engName, price, orderStatus);
+    public static Coffee of(String coffeeCode, String korName, String engName, Integer price, String orderStatus, Boolean sizeSelectable) {
+        return new Coffee(coffeeCode, korName, engName, price, orderStatus, sizeSelectable);
     }
 
     @Override
