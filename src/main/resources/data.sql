@@ -1,0 +1,1 @@
+insert into option (created_at,modified_at,eng_name,kor_name,price) values (now(),now(),'syrup','시럽',300);
