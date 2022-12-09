@@ -17,7 +17,7 @@ public class CoffeeOrder {
     private Long id;
 
     @Setter @ManyToOne(optional = false)
-    private Order order;
+    private Orders orders;
 
     @Setter @ManyToOne(optional = false)
     private Coffee coffee;
@@ -28,14 +28,14 @@ public class CoffeeOrder {
     @OneToMany(mappedBy = "coffeeOrder", cascade = CascadeType.ALL)
     private final Set<CoffeeOrderOption> coffeeOrderOptions = new LinkedHashSet<>();
 
-    private CoffeeOrder(Order order, Coffee coffee, Integer quantity){
-        this.order = order;
+    private CoffeeOrder(Orders orders, Coffee coffee, Integer quantity){
+        this.orders = orders;
         this.coffee = coffee;
         this.quantity = quantity;
     }
 
-    public static CoffeeOrder of(Order order, Coffee coffee, Integer quantity){
-        return new CoffeeOrder(order, coffee, quantity);
+    public static CoffeeOrder of(Orders orders, Coffee coffee, Integer quantity){
+        return new CoffeeOrder(orders, coffee, quantity);
     }
 
 }

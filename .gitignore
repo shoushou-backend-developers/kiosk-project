@@ -34,7 +34,7 @@ gradle-app.setting
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij+all,windows,macos,eclipse,visualstudiocode,java
 
 ###application.yaml
-application.yaml
+application.yml
 
 ### Eclipse ###
 .metadata
