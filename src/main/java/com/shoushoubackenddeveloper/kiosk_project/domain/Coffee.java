@@ -13,7 +13,8 @@ import java.util.Objects;
 @Table(indexes = {
         @Index(columnList = "coffeeCode"),
         @Index(columnList = "korName"),
-        @Index(columnList = "engName")
+        @Index(columnList = "engName"),
+        @Index(columnList = "createdAt")
 })
 @Entity
 public class Coffee extends AuditingFields {
@@ -47,7 +48,7 @@ public class Coffee extends AuditingFields {
         this.sizeSelectable = sizeSelectable;
     }
 
-    public static Coffee of(String coffeeCode, String korName, String engName, Integer price, String orderStatus, Boolean sizeSelectable) {
+    public static Coffee of(Long id, String coffeeCode, String korName, String engName, Integer price, String orderStatus, Boolean sizeSelectable) {
         return new Coffee(coffeeCode, korName, engName, price, orderStatus, sizeSelectable);
     }
 

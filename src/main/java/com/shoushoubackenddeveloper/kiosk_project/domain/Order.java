@@ -13,6 +13,7 @@ import java.util.Set;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
+@Table(name = "ORDER_TABLE")
 public class Order extends AuditingFields {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +22,7 @@ public class Order extends AuditingFields {
     private Integer orderNo;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private final Set<CoffeeOrder> coffeeOrders = new LinkedHashSet<>();
+    private final Set<CoffeeOrder> coffeeOrder = new LinkedHashSet<>();
 
     private Order(Integer orderNo) {
         this.orderNo = orderNo;
