@@ -1,1 +1,3 @@
-insert into option (created_at,modified_at,eng_name,kor_name,price) values (now(),now(),'syrup','시럽',300);
+insert into option_table (created_at,modified_at,eng_name,kor_name,price) values (now(),now(),'syrup','시럽',300);
+insert into coffee (created_at,modified_at,coffee_code,eng_name,kor_name,price,order_status,size_selectable) values (now(),now(),'AME','아메리카노','Americano',4000,'판매중',true),
+                                                                                                                      (now(),now(),'LAT','라떼','Latte','4500','준비중',true);

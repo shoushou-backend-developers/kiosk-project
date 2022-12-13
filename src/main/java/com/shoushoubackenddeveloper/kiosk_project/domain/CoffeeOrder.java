@@ -1,10 +1,7 @@
 package com.shoushoubackenddeveloper.kiosk_project.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -26,6 +23,7 @@ public class CoffeeOrder {
     private Integer quantity;
 
     @OneToMany(mappedBy = "coffeeOrder", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private final Set<CoffeeOrderOption> coffeeOrderOptions = new LinkedHashSet<>();
 
     private CoffeeOrder(Order order, Coffee coffee, Integer quantity){

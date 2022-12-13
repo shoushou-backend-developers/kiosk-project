@@ -3,6 +3,9 @@ package com.shoushoubackenddeveloper.kiosk_project.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @ToString(callSuper = true)
@@ -11,7 +14,8 @@ import lombok.*;
         @Index(columnList = "engName"),
         @Index(columnList = "price"),
         @Index(columnList = "createdAt")
-})
+
+}, name = "OPTION_TABLE")
 @Entity
 public class Option extends AuditingFields {
 
@@ -26,6 +30,9 @@ public class Option extends AuditingFields {
 
     @Setter
     private Integer price;
+
+    @ManyToOne
+    private CoffeeOrderOption coffeeOrderOption;
 
     private Option(String korName, String engName, Integer price) {
         this.korName = korName;
