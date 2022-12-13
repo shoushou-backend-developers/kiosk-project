@@ -28,7 +28,7 @@ public class Order extends AuditingFields {
         this.orderNo = orderNo;
     }
 
-    public static Order of(Integer orderNo) {
+    public static Order of(Long id, Integer orderNo) {
         return new Order(orderNo);
     }
 

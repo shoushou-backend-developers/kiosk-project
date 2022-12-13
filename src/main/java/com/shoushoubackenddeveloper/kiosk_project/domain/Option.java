@@ -31,8 +31,8 @@ public class Option extends AuditingFields {
     @Setter
     private Integer price;
 
-    @OneToMany(mappedBy = "option", cascade = CascadeType.ALL)
-    private final Set<CoffeeOrderOption> coffeeOrderOptions = new LinkedHashSet<>();
+    @ManyToOne
+    private CoffeeOrderOption coffeeOrderOption;
 
     private Option(String korName, String engName, Integer price) {
         this.korName = korName;
